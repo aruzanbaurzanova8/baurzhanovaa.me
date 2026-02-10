@@ -1,0 +1,559 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+body {
+    background-color: #ffffff;
+    font-family: 'Archivo Black', sans-serif;}
+
+
+
+.left-side {
+    flex: 0.6;
+    position: relative;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+    padding-left: 40px;
+}
+
+.right-side {
+    position: relative;
+    flex: 1.4;
+    padding: 40px 80px;
+}
+.intro h1 {
+    font-size: 80px;
+    margin-bottom: 40px;
+    font-weight: normal;
+    letter-spacing: 7px;
+    font-family:  'Archivo Black', sans-serif;
+    overflow: hidden;
+    border-right: none;
+    white-space: nowrap;
+    width: fit-content;
+    animation: typing 3s steps(40, end) forwards;
+    position: relative;
+    color: #000;
+}
+.intro {
+    position:absolute;
+    top: 200%;
+    transform: translateY(-50%);
+    
+    opacity: 0;
+    animation: fadeIn 1.2s ease forwards;
+}
+
+
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.intro h1::before,
+.intro h1::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.intro h1::before {
+    left: 2px;
+    text-shadow: -2px 0 #ffffff;
+}
+
+.intro h1::after {
+    left: -2px;
+    text-shadow: -2px 0 #b2afb2;
+}
+
+.intro h1:hover::before {
+    opacity: 0.8;
+    animation: glitch-shift-1 0.3s infinite;
+}
+
+.intro h1:hover::after {
+    opacity: 0.8;
+    animation: glitch-shift-2 0.3s infinite;
+}
+.intro .highlight {
+    font-size: 40px;
+    color: #030303;
+    font-weight: bold;
+    margin-bottom: 8px;
+    
+    /* Typewriter effect - starts after h1 finishes */
+    overflow: hidden;
+    border-right: .15em solid transparent;
+    white-space: nowrap;
+    animation: typing 3.5s steps(50, end) 3.5s 1 normal both, blink-caret .75s step-end 2.7s forwards;
+    width: fit-content;
+    position: relative;
+}
+
+.intro .highlight::before,
+.intro .highlight::after {
+    content: "a telecommunications and electrical engineer";
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.intro .highlight::before {
+    left: 2px;
+    text-shadow: -2px 0 #0a0a0a;
+}
+
+.intro .highlight::after {
+    left: -2px;
+    text-shadow: -2px 0 #a9a6a9;
+}
+
+.intro .highlight:hover::before {
+    opacity: 0.8;
+    animation: glitch-shift-1 0.3s infinite;
+}
+
+.intro .highlight:hover::after {
+    opacity: 0.8;
+    animation: glitch-shift-2 0.3s infinite;
+}
+
+.intro .location {
+    font-size: 20px;
+    color: #999;
+    margin-bottom: 60px;
+}
+
+
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: #000; }
+    50% { border-color: transparent; }
+}
+@keyframes glitch-shift-1 {
+    0%, 100% { clip-path: inset(0% 0 0 0); }
+    20% { clip-path: inset(0% 0 85% 0); }
+    40% { clip-path: inset(80% 0 0 0); }
+    60% { clip-path: inset(0% 0 70% 0); }
+    80% { clip-path: inset(75% 0 0 0); }
+}
+
+@keyframes glitch-shift-2 {
+    0%, 100% { clip-path: inset(0% 0 0 0); }
+    20% { clip-path: inset(80% 0 0 0); }
+    40% { clip-path: inset(0% 0 85% 0); }
+    60% { clip-path: inset(75% 0 0 0); }
+    80% { clip-path: inset(0% 0 70% 0); }
+}
+
+.glitch {
+    position: relative;
+}
+
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #aaa;
+  pointer-events: none;
+  opacity: 1;
+}
+
+
+
+.glitch::before {
+  transform: translateX(2px);
+  text-shadow: -2px 0 #606160;
+}
+
+
+.glitch::after {
+  transform: translateX(-2px);
+  text-shadow: -2px 0 #9a979a;
+}
+
+.glitch:hover::before {
+  animation: glitch-shift-1 0.3s infinite;
+}
+
+.glitch:hover::after {
+  animation: glitch-shift-2 0.3s infinite;
+}
+
+
+
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+
+.dock {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+  padding: 12px 24px;
+  background: rgba(60, 60, 60, 0.6);
+  border-radius: 80px;
+  backdrop-filter: blur(8px);
+
+  /* IMPORTANT: prevent view-transition from affecting nav */
+  view-transition-name: none;
+}
+
+.dock-item {
+  /* REMOVE fixed position */
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  color: #fff;
+  padding: 12px 24px;
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+
+  /* also block transition effect on buttons */
+  view-transition-name: none;
+}
+
+
+.dock-item:hover {
+  background: rgba(180, 173, 173, 0.08);
+  color: #212020;
+  transform: translateY(-2px);
+}
+.dock-item.glitch {
+  position: relative;
+  color: #fff;  /* Normal white text */
+}
+
+.dock-item.glitch::before,
+.dock-item.glitch::after {
+  opacity: 0; } /* Hidden by default */
+
+.dock-item:hover {
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+
+html, body {
+  height: 100%;
+  background: #fff;
+}
+
+.page-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: #fff;        
+  overflow: hidden;
+}
+
+.section {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  background: #fff;
+  overflow-y: auto;        
+}
+
+.section.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* View transition */
+::view-transition-old(page) {
+  animation: fadeOut 0.12s linear forwards;
+}
+
+::view-transition-new(page) {
+  animation: fadeIn 0.35s cubic-bezier(0,0,0.2,1) 0.12s both;
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(24px); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateX(32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Remove max-height from page-content since section handles scroll now */
+.page-content {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 40px 120px 40px;  /* Extra bottom padding for dock */
+    overflow-y: hidden;  /* Changed from auto */
+    max-height: none;  /* Remove the height limit */
+}
+
+.cv-section {
+    margin-bottom: 40px;
+}
+
+.cv-section h2 {
+    font-size: 28px;
+    color: #0c0c0c;
+    margin-bottom: 15px;
+    margin-top: 20px;
+}
+
+.cv-section p {
+    font-size: 16px;
+    line-height: 1.8;
+    color:#aaa9a9;
+    margin-bottom: 10px;
+}
+
+.skills-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.skill-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 12px;
+    background: rgba(170, 167, 167, 0.05);
+    border-left: 3px solid #bababa;
+}
+
+.skill-label {
+    color: #8c8888;
+    font-weight: bold;
+    min-width: 100px;
+}
+
+.skill-value {
+    color:#aaa9a9;
+}
+
+.exp-item {
+    margin-bottom: 25px;
+    padding: 15px;
+    background: rgba(170, 167, 167, 0.05);
+    border-left: 3px solid #bababa;
+}
+
+.exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.exp-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.exp-date {
+    color: #000000;
+    font-size: 14px;
+}
+
+.exp-company {
+    color: #8c8888;
+    font-size: 14px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.exp-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.exp-list li {
+    color: #aaa9a9;
+    font-size: 14px;
+    margin-bottom: 8px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.exp-list li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #050505;
+}
+
+.achievements-list,
+.cert-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.achievements-list li,
+.cert-list li {
+    color: #aaa9a9;
+    font-size: 15px;
+    margin-bottom: 12px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.achievements-list li::before,
+.cert-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #000000;
+}
+body {
+    overflow: hidden;
+    height: 100vh;
+}
+
+.terminal {
+    font-size: 40px;
+    font-weight: normal;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    min-height: 60px;
+}
+
+.cursor {
+    color: #000000;
+    animation: blink 0.75s infinite;
+    margin-left: 5px;
+}
+
+@keyframes blink {
+    0%, 50%, 100% { opacity: 1; }
+    51%, 99% { opacity: 0; }
+}
+
+.intro .location {
+    font-size: 18px;
+    color: #999;
+    margin-bottom: 0;
+}
+
+
+/* Contact Section */
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 50px;
+    max-width: 700px;
+}
+
+.contact-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #333;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.contact-link:hover {
+    transform: translateX(10px);
+}
+
+.contact-link .label {
+    color: #999;
+    font-size: 16px;
+}
+
+.contact-link .value {
+    color: #000000;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+.project-card {
+  margin-top: 50px;
+  padding: 30px;
+  background: rgba(170, 167, 167, 0.06);
+  border-left: 3px solid #bababa;
+  border-radius: 8px;
+  max-width: 800px;
+}
+
+.project-card h2 {
+  font-size: 24px;
+  margin-bottom: 14px;
+  color: #000;
+}
+
+.project-description {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #aaa9a9;
+  margin-bottom: 20px;
+}
+
+.project-features {
+  list-style: none;
+  padding-left: 0;
+}
+
+.project-features li {
+  font-size: 15px;
+  color: #8c8888;
+  margin-bottom: 10px;
+  padding-left: 22px;
+  position: relative;
+}
+
+.project-features li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #000;
+}
